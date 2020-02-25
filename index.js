@@ -67,7 +67,7 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
-  return callback(stringList[stringList.length -1]);
+  return callback(stringList[stringList.length - 1]);
 }
 
 /**
@@ -88,9 +88,9 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-   function sum(total, num){
-     return total + num;
-   }
+  function sum(total, num) {
+    return total + num;
+  }
   return callback(numberList.reduce(sum, 0));
 }
 
@@ -113,7 +113,7 @@ function processSum(numberList, callback) {
  * should return 1000.
 */
 function processProduct(num1, num2, callback) {
-  return callback(num1*num2);
+  return callback(num1 * num2);
 }
 
 /**
@@ -183,10 +183,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
 */
 function getFullNames(runners) {
   const runnerNames = [];
-  runners.forEach(function(item, i){
+  runners.forEach(function (item, i) {
     runnerNames[i] = `${runners[i].last_name}, ${runners[i].first_name}`;
-  }); 
-   return runnerNames;
+  });
+  return runnerNames;
 }
 
 /**
@@ -202,7 +202,7 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  const firstCaps = runners.map(function(item){
+  const firstCaps = runners.map(function (item) {
     return item.first_name.toUpperCase();
   })
   return firstCaps;
@@ -222,7 +222,7 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  const shirtFilter = runners.filter(function(item){
+  const shirtFilter = runners.filter(function (item) {
     return item.shirt_size === tShirtSize;
   })
   return shirtFilter;
@@ -239,10 +239,10 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  function sum(total, num){
+  function sum(total, num) {
     return total + num.donation;
   }
- return runners.reduce(sum,0);
+  return runners.reduce(sum, 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -263,9 +263,10 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  let count = 0;
+  let count = -1;
   return function counter() {
-    ++count
+    ++count;
+    return count;
   }
   // BROKEN CODE ENDS
 }
@@ -290,8 +291,17 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(maxNum) {
+  let count = -1;
+  return function counter() {
+    if (count < maxNum) {
+      count++;
+      return count;
+    } else {
+      count = 0
+      return count;
+    }
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
